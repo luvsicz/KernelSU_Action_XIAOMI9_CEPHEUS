@@ -1,10 +1,14 @@
 name: Build Kernel
 on:
   workflow_dispatch:
+    inputs:
+      desc:
+        required: true
+        type: string
 
 jobs:
   build:
-    name: Build Kernel by ${{ github.actor }}
+    name: Build Kernel >>>  ${{ inputs.desc }}
     runs-on: ubuntu-22.04
     env:
       CCACHE_COMPILERCHECK: "%compiler% -dumpmachine; %compiler% -dumpversion"
